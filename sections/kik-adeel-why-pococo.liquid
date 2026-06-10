@@ -1,0 +1,524 @@
+{%- liquid
+  assign heading_tag = section.settings.heading_tag | default: 'h2'
+  assign desktop_grid_class = 'desktop:tw:grid-cols-4'
+  assign intro_alignment_class = 'tw:mx-auto tw:items-center tw:text-center'
+
+  case section.settings.desktop_columns
+    when '2'
+      assign desktop_grid_class = 'desktop:tw:grid-cols-2'
+    when '3'
+      assign desktop_grid_class = 'desktop:tw:grid-cols-3'
+  endcase
+
+  case section.settings.content_alignment
+    when 'left'
+      assign intro_alignment_class = 'tw:mr-auto tw:items-start tw:text-left'
+  endcase
+
+  assign image_ratio_class = 'tw:aspect-[16/10]'
+
+  case section.settings.image_ratio
+    when '4/3'
+      assign image_ratio_class = 'tw:aspect-[4/3]'
+    when '1/1'
+      assign image_ratio_class = 'tw:aspect-square'
+    when '3/2'
+      assign image_ratio_class = 'tw:aspect-[3/2]'
+  endcase
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .kik-adeel-why-pococo {
+    --kik-adeel-section-max-width: {{ section.settings.section_max_width }}px;
+    --kik-adeel-intro-max-width: {{ section.settings.intro_width }}px;
+    --kik-adeel-pad-x-mobile: {{ section.settings.padding_x_mobile }}px;
+    --kik-adeel-pad-x-desktop: {{ section.settings.padding_x_desktop }}px;
+    --kik-adeel-pad-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --kik-adeel-pad-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --kik-adeel-pad-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --kik-adeel-pad-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --kik-adeel-grid-gap-mobile: {{ section.settings.grid_gap_mobile }}px;
+    --kik-adeel-grid-gap-desktop: {{ section.settings.grid_gap_desktop }}px;
+    --kik-adeel-card-padding-mobile: {{ section.settings.card_padding_mobile }}px;
+    --kik-adeel-card-padding-desktop: {{ section.settings.card_padding_desktop }}px;
+    --kik-adeel-card-radius: {{ section.settings.card_radius }}px;
+    --kik-adeel-image-radius: {{ section.settings.image_radius }}px;
+    --kik-adeel-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --kik-adeel-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+    --kik-adeel-description-size-mobile: {{ section.settings.description_size_mobile }}px;
+    --kik-adeel-description-size-desktop: {{ section.settings.description_size_desktop }}px;
+    --kik-adeel-title-size-mobile: {{ section.settings.card_title_size_mobile }}px;
+    --kik-adeel-title-size-desktop: {{ section.settings.card_title_size_desktop }}px;
+    --kik-adeel-body-size-mobile: {{ section.settings.card_body_size_mobile }}px;
+    --kik-adeel-body-size-desktop: {{ section.settings.card_body_size_desktop }}px;
+    --kik-adeel-section-bg: {{ section.settings.section_background }};
+    --kik-adeel-card-bg: {{ section.settings.card_background }};
+    --kik-adeel-border: {{ section.settings.card_border_color }};
+    --kik-adeel-heading-color: {{ section.settings.heading_color }};
+    --kik-adeel-description-color: {{ section.settings.description_color }};
+    --kik-adeel-card-title-color: {{ section.settings.card_title_color }};
+    --kik-adeel-card-body-color: {{ section.settings.card_body_color }};
+  }
+</style>
+
+<section class="kik-adeel-why-pococo tw:bg-[var(--kik-adeel-section-bg)]" style="font-family: var(--kik-text-font-body), sans-serif;">
+  <div class="tw:mx-auto tw:max-w-[var(--kik-adeel-section-max-width)] tw:px-[var(--kik-adeel-pad-x-mobile)] tw:pt-[var(--kik-adeel-pad-top-mobile)] tw:pb-[var(--kik-adeel-pad-bottom-mobile)] desktop:tw:px-[var(--kik-adeel-pad-x-desktop)] desktop:tw:pt-[var(--kik-adeel-pad-top-desktop)] desktop:tw:pb-[var(--kik-adeel-pad-bottom-desktop)]">
+    <div class="tw:flex tw:flex-col tw:gap-[12px] {{ intro_alignment_class }} tw:max-w-[var(--kik-adeel-intro-max-width)]">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="tw:m-0 tw:text-[var(--kik-color-text-secondary)] tw:text-[12px] tw:font-medium tw:uppercase tw:tracking-[0.14em]">
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <{{ heading_tag }}
+          class="tw:m-0 tw:text-balance tw:font-semibold tw:tracking-[-0.03em] tw:text-[length:var(--kik-adeel-heading-size-mobile)] tw:leading-[var(--kik-line-height-heading)] desktop:tw:text-[length:var(--kik-adeel-heading-size-desktop)]"
+          style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-heading-color);"
+        >
+          {{ section.settings.heading }}
+        </{{ heading_tag }}>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <div class="tw:m-0 tw:max-w-full tw:text-[length:var(--kik-adeel-description-size-mobile)] tw:leading-[var(--kik-line-height-body)] desktop:tw:text-[length:var(--kik-adeel-description-size-desktop)]" style="color: var(--kik-adeel-description-color);">
+          {{ section.settings.description | newline_to_br }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="tw:mt-[32px] tw:grid tw:grid-cols-1 tw:gap-[var(--kik-adeel-grid-gap-mobile)] tablet:tw:grid-cols-2 desktop:tw:gap-[var(--kik-adeel-grid-gap-desktop)] {{ desktop_grid_class }}">
+        {%- for block in section.blocks -%}
+          <article class="tw:flex tw:h-full tw:flex-col tw:rounded-[var(--kik-adeel-card-radius)] tw:border tw:border-[var(--kik-adeel-border)] tw:bg-[var(--kik-adeel-card-bg)] tw:p-[var(--kik-adeel-card-padding-mobile)] tw:shadow-[0_10px_24px_rgba(0,43,78,0.04)] desktop:tw:p-[var(--kik-adeel-card-padding-desktop)]" {{ block.shopify_attributes }}>
+            <div class="tw:overflow-hidden tw:rounded-[var(--kik-adeel-image-radius)] tw:bg-[var(--kik-color-bg-alt-inverse)] {{ image_ratio_class }}">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag:
+                    widths: '360, 540, 720, 900',
+                    loading: 'lazy',
+                    class: 'tw:h-full tw:w-full tw:object-cover'
+                }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'tw:h-full tw:w-full tw:object-cover' }}
+              {%- endif -%}
+            </div>
+
+            <div class="tw:flex tw:flex-1 tw:flex-col tw:gap-[8px] tw:pt-[16px]">
+              {%- if block.settings.title != blank -%}
+                <h3
+                  class="tw:m-0 tw:font-semibold tw:tracking-[-0.02em] tw:text-[length:var(--kik-adeel-title-size-mobile)] tw:leading-[1.18] desktop:tw:text-[length:var(--kik-adeel-title-size-desktop)]"
+                  style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-card-title-color);"
+                >
+                  {{ block.settings.title }}
+                </h3>
+              {%- endif -%}
+
+              {%- if block.settings.body != blank -%}
+                <div class="tw:m-0 tw:text-[length:var(--kik-adeel-body-size-mobile)] tw:leading-[1.55] desktop:tw:text-[length:var(--kik-adeel-body-size-desktop)]" style="color: var(--kik-adeel-card-body-color);">
+                  {{ block.settings.body | newline_to_br }}
+                </div>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KIK Adeel Why Pococo",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Add Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Pococo Feels Different at Night"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Designed to help you create a calmer room, reduce screen time, and ease into rest."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "default": "h2",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Intro alignment",
+      "default": "center",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "section_max_width",
+      "label": "Section max width",
+      "min": 960,
+      "max": 1440,
+      "step": 20,
+      "unit": "px",
+      "default": 1360
+    },
+    {
+      "type": "range",
+      "id": "intro_width",
+      "label": "Intro width",
+      "min": 420,
+      "max": 760,
+      "step": 20,
+      "unit": "px",
+      "default": 620
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns",
+      "label": "Desktop columns",
+      "default": "4",
+      "options": [
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" },
+        { "value": "4", "label": "4 columns" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "default": "16/10",
+      "options": [
+        { "value": "16/10", "label": "16:10" },
+        { "value": "3/2", "label": "3:2" },
+        { "value": "4/3", "label": "4:3" },
+        { "value": "1/1", "label": "Square" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size mobile",
+      "min": 20,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading size desktop",
+      "min": 28,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size_mobile",
+      "label": "Description size mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "description_size_desktop",
+      "label": "Description size desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_mobile",
+      "label": "Card title size mobile",
+      "min": 14,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_title_size_desktop",
+      "label": "Card title size desktop",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_body_size_mobile",
+      "label": "Card body size mobile",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_body_size_desktop",
+      "label": "Card body size desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Side padding mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_x_desktop",
+      "label": "Side padding desktop",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top padding desktop",
+      "min": 0,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding desktop",
+      "min": 0,
+      "max": 180,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "label": "Card gap mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_desktop",
+      "label": "Card gap desktop",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding_mobile",
+      "label": "Card padding mobile",
+      "min": 10,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_padding_desktop",
+      "label": "Card padding desktop",
+      "min": 10,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card radius",
+      "min": 8,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Image radius",
+      "min": 4,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#fefaf2"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#f2f4f6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#002b4e"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#616568"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#002b4e"
+    },
+    {
+      "type": "color",
+      "id": "card_body_color",
+      "label": "Card body color",
+      "default": "#616568"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "No App. No Phone. No Bedtime Scrolling."
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body text",
+          "default": "Control everything with three simple buttons, power, rotate, and timer. No Wi-Fi, no setup, no notifications."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "KIK Adeel Why Pococo",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "No App. No Phone. No Bedtime Scrolling.",
+            "body": "Control everything with three simple buttons, power, rotate, and timer. No Wi-Fi, no setup, no notifications."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Create a Softer Way to Unwind",
+            "body": "Fill your ceiling and walls with slow-moving celestial scenes that help your room feel quieter and more peaceful."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Realistic Stars, Not Laser Dots",
+            "body": "Pococo uses projection discs with detailed cosmic scenes, giving your room a more immersive night-sky experience."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Soft Light That Won't Take Over the Room",
+            "body": "Gentle, indirect projection creates ambiance without harsh brightness, making it easier to relax before sleep."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
