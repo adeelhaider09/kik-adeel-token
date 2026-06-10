@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -29,33 +38,114 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
         "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "kik_adeel_why_pococo_YFthGe": {
+      "type": "kik-adeel-why-pococo",
+      "blocks": {
+        "benefit_iykfV4": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/Why-pococo-4.png",
+            "title": "No App. No Phone. No Bedtime Scrolling.",
+            "body": "Control everything with three simple buttons, power, rotate, and timer. No Wi-Fi, no setup, no notifications."
+          }
+        },
+        "benefit_UFrFfJ": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/Why-pococo-3.png",
+            "title": "Create a Softer Way to Unwind",
+            "body": "Fill your ceiling and walls with slow-moving celestial scenes that help your room feel quieter and more peaceful."
+          }
+        },
+        "benefit_LRdcBL": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/Why-pococo-2.png",
+            "title": "Realistic Stars, Not Laser Dots",
+            "body": "Pococo uses projection discs with detailed cosmic scenes, giving your room a more immersive night-sky experience."
+          }
+        },
+        "benefit_DbtjwL": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/Why-pococo-1.png",
+            "title": "Soft Light That Won't Take Over the Room",
+            "body": "Gentle, indirect projection creates ambiance without harsh brightness, making it easier to relax before sleep."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_iykfV4",
+        "benefit_UFrFfJ",
+        "benefit_LRdcBL",
+        "benefit_DbtjwL"
+      ],
+      "name": "KIK Adeel Why Pococo",
+      "settings": {
+        "eyebrow": "Add Text",
+        "heading": "Why Pococo Feels Different at Night",
+        "description": "Designed to help you create a calmer room, reduce screen time, and ease into rest.",
+        "heading_tag": "h2",
+        "content_alignment": "center",
+        "section_max_width": 1360,
+        "intro_width": 620,
+        "desktop_columns": "4",
+        "image_ratio": "16/10",
+        "heading_size_mobile": 24,
+        "heading_size_desktop": 32,
+        "description_size_mobile": 14,
+        "description_size_desktop": 15,
+        "card_title_size_mobile": 16,
+        "card_title_size_desktop": 16,
+        "card_body_size_mobile": 14,
+        "card_body_size_desktop": 15,
+        "padding_x_mobile": 16,
+        "padding_x_desktop": 40,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "grid_gap_mobile": 20,
+        "grid_gap_desktop": 20,
+        "card_padding_mobile": 14,
+        "card_padding_desktop": 14,
+        "card_radius": 14,
+        "image_radius": 10,
+        "section_background": "#fefaf2",
+        "card_background": "#ffffff",
+        "card_border_color": "#f2f4f6",
+        "heading_color": "#002b4e",
+        "description_color": "#616568",
+        "card_title_color": "#002b4e",
+        "card_body_color": "#616568"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,6 +153,7 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
       }
@@ -70,6 +161,7 @@
   },
   "order": [
     "image_banner",
+    "kik_adeel_why_pococo_YFthGe",
     "featured_collection"
   ]
 }
