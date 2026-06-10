@@ -346,6 +346,71 @@
     --tw-shadow: 0 10px 24px var(--tw-shadow-color, rgba(0,43,78,0.04));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
+  .tw\:tablet\:grid-cols-2 {
+    @media (width >= 750px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .tw\:desktop\:grid-cols-2 {
+    @media (width >= 990px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .tw\:desktop\:grid-cols-3 {
+    @media (width >= 990px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .tw\:desktop\:grid-cols-4 {
+    @media (width >= 990px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .tw\:desktop\:gap-\[var\(--kik-adeel-grid-gap-desktop\)\] {
+    @media (width >= 990px) {
+      gap: var(--kik-adeel-grid-gap-desktop);
+    }
+  }
+  .tw\:desktop\:p-\[var\(--kik-adeel-card-padding-desktop\)\] {
+    @media (width >= 990px) {
+      padding: var(--kik-adeel-card-padding-desktop);
+    }
+  }
+  .tw\:desktop\:px-\[var\(--kik-adeel-pad-x-desktop\)\] {
+    @media (width >= 990px) {
+      padding-inline: var(--kik-adeel-pad-x-desktop);
+    }
+  }
+  .tw\:desktop\:pt-\[var\(--kik-adeel-pad-top-desktop\)\] {
+    @media (width >= 990px) {
+      padding-top: var(--kik-adeel-pad-top-desktop);
+    }
+  }
+  .tw\:desktop\:pb-\[var\(--kik-adeel-pad-bottom-desktop\)\] {
+    @media (width >= 990px) {
+      padding-bottom: var(--kik-adeel-pad-bottom-desktop);
+    }
+  }
+  .tw\:desktop\:text-\[length\:var\(--kik-adeel-body-size-desktop\)\] {
+    @media (width >= 990px) {
+      font-size: var(--kik-adeel-body-size-desktop);
+    }
+  }
+  .tw\:desktop\:text-\[length\:var\(--kik-adeel-description-size-desktop\)\] {
+    @media (width >= 990px) {
+      font-size: var(--kik-adeel-description-size-desktop);
+    }
+  }
+  .tw\:desktop\:text-\[length\:var\(--kik-adeel-heading-size-desktop\)\] {
+    @media (width >= 990px) {
+      font-size: var(--kik-adeel-heading-size-desktop);
+    }
+  }
+  .tw\:desktop\:text-\[length\:var\(--kik-adeel-title-size-desktop\)\] {
+    @media (width >= 990px) {
+      font-size: var(--kik-adeel-title-size-desktop);
+    }
+  }
 }
 :root {
   --kik-color-action-primary: #002b4e;
