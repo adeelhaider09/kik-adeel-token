@@ -2,6 +2,7 @@
   assign heading_tag = section.settings.heading_tag | default: 'h2'
   assign desktop_grid_class = 'tw:desktop:grid-cols-4'
   assign intro_alignment_class = 'tw:mx-auto tw:items-center tw:text-center'
+  assign image_ratio_class = 'tw:aspect-[16/10]'
 
   case section.settings.desktop_columns
     when '2'
@@ -10,12 +11,9 @@
       assign desktop_grid_class = 'tw:desktop:grid-cols-3'
   endcase
 
-  case section.settings.content_alignment
-    when 'left'
-      assign intro_alignment_class = 'tw:mr-auto tw:items-start tw:text-left'
-  endcase
-
-  assign image_ratio_class = 'tw:aspect-[16/10]'
+  if section.settings.content_alignment == 'left'
+    assign intro_alignment_class = 'tw:mr-auto tw:items-start tw:text-left'
+  endif
 
   case section.settings.image_ratio
     when '4/3'
@@ -61,18 +59,21 @@
   }
 </style>
 
-<section class="kik-adeel-why-pococo tw:bg-[var(--kik-adeel-section-bg)]" style="font-family: var(--kik-text-font-body), sans-serif;">
+<section
+  class="kik-adeel-why-pococo tw:bg-[var(--kik-adeel-section-bg)]"
+  style="font-family: var(--kik-text-font-body), sans-serif; letter-spacing: 0;"
+>
   <div class="tw:mx-auto tw:max-w-[var(--kik-adeel-section-max-width)] tw:px-[var(--kik-adeel-pad-x-mobile)] tw:pt-[var(--kik-adeel-pad-top-mobile)] tw:pb-[var(--kik-adeel-pad-bottom-mobile)] tw:desktop:px-[var(--kik-adeel-pad-x-desktop)] tw:desktop:pt-[var(--kik-adeel-pad-top-desktop)] tw:desktop:pb-[var(--kik-adeel-pad-bottom-desktop)]">
-    <div class="tw:flex tw:flex-col tw:gap-[12px] {{ intro_alignment_class }} tw:max-w-[var(--kik-adeel-intro-max-width)]">
+    <div class="tw:flex tw:max-w-[var(--kik-adeel-intro-max-width)] tw:flex-col tw:gap-[12px] {{ intro_alignment_class }}">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="tw:m-0 tw:text-[var(--kik-color-text-secondary)] tw:text-[12px] tw:font-medium tw:uppercase tw:tracking-[0.14em]">
+        <p class="tw:m-0 tw:text-[12px] tw:font-medium tw:uppercase tw:tracking-[0.14em] tw:text-[var(--kik-color-text-secondary)]">
           {{ section.settings.eyebrow | escape }}
         </p>
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
         <{{ heading_tag }}
-          class="tw:m-0 tw:text-balance tw:font-semibold tw:tracking-[-0.03em] tw:text-[length:var(--kik-adeel-heading-size-mobile)] tw:leading-[var(--kik-line-height-heading)] tw:desktop:text-[length:var(--kik-adeel-heading-size-desktop)]"
+          class="tw:m-0 tw:text-balance tw:text-[length:var(--kik-adeel-heading-size-mobile)] tw:font-bold tw:leading-[var(--kik-line-height-heading)] tw:tracking-[-0.03em] tw:desktop:text-[length:var(--kik-adeel-heading-size-desktop)]"
           style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-heading-color);"
         >
           {{ section.settings.heading }}
@@ -80,8 +81,11 @@
       {%- endif -%}
 
       {%- if section.settings.description != blank -%}
-        <div class="tw:m-0 tw:max-w-full tw:text-[length:var(--kik-adeel-description-size-mobile)] tw:leading-[var(--kik-line-height-body)] tw:desktop:text-[length:var(--kik-adeel-description-size-desktop)]" style="color: var(--kik-adeel-description-color);">
-          {{ section.settings.description | newline_to_br }}
+        <div
+          class="tw:m-0 tw:max-w-full tw:text-[length:var(--kik-adeel-description-size-mobile)] tw:leading-[var(--kik-line-height-body)] tw:desktop:text-[length:var(--kik-adeel-description-size-desktop)]"
+          style="color: var(--kik-adeel-description-color);"
+        >
+          {{ section.settings.description | escape | newline_to_br }}
         </div>
       {%- endif -%}
     </div>
@@ -89,7 +93,10 @@
     {%- if section.blocks.size > 0 -%}
       <div class="tw:mt-[32px] tw:grid tw:grid-cols-1 tw:gap-[var(--kik-adeel-grid-gap-mobile)] tw:tablet:grid-cols-2 tw:desktop:gap-[var(--kik-adeel-grid-gap-desktop)] {{ desktop_grid_class }}">
         {%- for block in section.blocks -%}
-          <article class="tw:flex tw:h-full tw:flex-col tw:rounded-[var(--kik-adeel-card-radius)] tw:border tw:border-[var(--kik-adeel-border)] tw:bg-[var(--kik-adeel-card-bg)] tw:p-[var(--kik-adeel-card-padding-mobile)] tw:shadow-[0_10px_24px_rgba(0,43,78,0.04)] tw:desktop:p-[var(--kik-adeel-card-padding-desktop)]" {{ block.shopify_attributes }}>
+          <article
+            class="tw:flex tw:h-full tw:flex-col tw:rounded-[var(--kik-adeel-card-radius)] tw:border tw:border-[var(--kik-adeel-border)] tw:bg-[var(--kik-adeel-card-bg)] tw:p-[var(--kik-adeel-card-padding-mobile)] tw:shadow-[0_10px_24px_rgba(0,43,78,0.04)] tw:desktop:p-[var(--kik-adeel-card-padding-desktop)]"
+            {{ block.shopify_attributes }}
+          >
             <div class="tw:overflow-hidden tw:rounded-[var(--kik-adeel-image-radius)] tw:bg-[var(--kik-color-bg-alt-inverse)] {{ image_ratio_class }}">
               {%- if block.settings.image != blank -%}
                 {{
@@ -108,16 +115,19 @@
             <div class="tw:flex tw:flex-1 tw:flex-col tw:gap-[8px] tw:pt-[16px]">
               {%- if block.settings.title != blank -%}
                 <h3
-                  class="tw:m-0 tw:font-semibold tw:tracking-[-0.02em] tw:text-[length:var(--kik-adeel-title-size-mobile)] tw:leading-[1.18] tw:desktop:text-[length:var(--kik-adeel-title-size-desktop)]"
+                  class="tw:m-0 tw:text-[length:var(--kik-adeel-title-size-mobile)] tw:font-bold tw:leading-[1.18] tw:tracking-[-0.02em] tw:desktop:text-[length:var(--kik-adeel-title-size-desktop)]"
                   style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-card-title-color);"
                 >
-                  {{ block.settings.title }}
+                  {{ block.settings.title | escape }}
                 </h3>
               {%- endif -%}
 
               {%- if block.settings.body != blank -%}
-                <div class="tw:m-0 tw:text-[length:var(--kik-adeel-body-size-mobile)] tw:leading-[1.55] tw:desktop:text-[length:var(--kik-adeel-body-size-desktop)]" style="color: var(--kik-adeel-card-body-color);">
-                  {{ block.settings.body | newline_to_br }}
+                <div
+                  class="tw:m-0 tw:text-[length:var(--kik-adeel-body-size-mobile)] tw:leading-[1.55] tw:desktop:text-[length:var(--kik-adeel-body-size-desktop)]"
+                  style="color: var(--kik-adeel-card-body-color);"
+                >
+                  {{ block.settings.body | escape | newline_to_br }}
                 </div>
               {%- endif -%}
             </div>
@@ -191,7 +201,7 @@
       "max": 760,
       "step": 20,
       "unit": "px",
-      "default": 620
+      "default": 540
     },
     {
       "type": "select",
@@ -374,7 +384,7 @@
       "max": 48,
       "step": 2,
       "unit": "px",
-      "default": 20
+      "default": 16
     },
     {
       "type": "range",
@@ -444,7 +454,7 @@
       "type": "color",
       "id": "description_color",
       "label": "Description color",
-      "default": "#616568"
+      "default": "#4d6b83"
     },
     {
       "type": "color",
