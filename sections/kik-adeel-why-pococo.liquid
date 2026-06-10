@@ -57,41 +57,46 @@
     --kik-adeel-card-title-color: {{ section.settings.card_title_color }};
     --kik-adeel-card-body-color: {{ section.settings.card_body_color }};
   }
-    #shopify-section-{{ section.id }} .kik-adeel-why-pococo__heading {
-    font-size: var(--kik-adeel-heading-size-mobile);
-    line-height: var(--kik-line-height-heading);
+
+  #shopify-section-{{ section.id }} .kik-adeel-why-pococo__heading {
+    font-size: var(--kik-adeel-heading-size-mobile) !important;
+    line-height: var(--kik-line-height-heading) !important;
+    font-weight: 700 !important;
   }
 
   #shopify-section-{{ section.id }} .kik-adeel-why-pococo__description {
-    font-size: var(--kik-adeel-description-size-mobile);
-    line-height: var(--kik-line-height-body);
+    font-size: var(--kik-adeel-description-size-mobile) !important;
+    line-height: var(--kik-line-height-body) !important;
+    font-weight: 400 !important;
   }
 
   #shopify-section-{{ section.id }} .kik-adeel-why-pococo__card-title {
-    font-size: var(--kik-adeel-title-size-mobile);
-    line-height: 1.18;
+    font-size: var(--kik-adeel-title-size-mobile) !important;
+    line-height: 1.18 !important;
+    font-weight: 700 !important;
   }
 
   #shopify-section-{{ section.id }} .kik-adeel-why-pococo__card-body {
-    font-size: var(--kik-adeel-body-size-mobile);
-    line-height: 1.55;
+    font-size: var(--kik-adeel-body-size-mobile) !important;
+    line-height: 1.55 !important;
+    font-weight: 400 !important;
   }
 
   @media screen and (min-width: 990px) {
     #shopify-section-{{ section.id }} .kik-adeel-why-pococo__heading {
-      font-size: var(--kik-adeel-heading-size-desktop);
+      font-size: var(--kik-adeel-heading-size-desktop) !important;
     }
 
     #shopify-section-{{ section.id }} .kik-adeel-why-pococo__description {
-      font-size: var(--kik-adeel-description-size-desktop);
+      font-size: var(--kik-adeel-description-size-desktop) !important;
     }
 
     #shopify-section-{{ section.id }} .kik-adeel-why-pococo__card-title {
-      font-size: var(--kik-adeel-title-size-desktop);
+      font-size: var(--kik-adeel-title-size-desktop) !important;
     }
 
     #shopify-section-{{ section.id }} .kik-adeel-why-pococo__card-body {
-      font-size: var(--kik-adeel-body-size-desktop);
+      font-size: var(--kik-adeel-body-size-desktop) !important;
     }
   }
 </style>
@@ -110,7 +115,7 @@
 
       {%- if section.settings.heading != blank -%}
         <{{ heading_tag }}
-          class="tw:m-0 tw:text-balance tw:text-[length:var(--kik-adeel-heading-size-mobile)] tw:font-bold tw:leading-[var(--kik-line-height-heading)] tw:tracking-[-0.03em] tw:desktop:text-[length:var(--kik-adeel-heading-size-desktop)]"
+          class="kik-adeel-why-pococo__heading tw:m-0 tw:text-balance tw:tracking-[-0.03em]"
           style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-heading-color);"
         >
           {{ section.settings.heading }}
@@ -119,7 +124,7 @@
 
       {%- if section.settings.description != blank -%}
         <div
-          class="tw:m-0 tw:max-w-full tw:text-[length:var(--kik-adeel-description-size-mobile)] tw:leading-[var(--kik-line-height-body)] tw:desktop:text-[length:var(--kik-adeel-description-size-desktop)]"
+          class="kik-adeel-why-pococo__description tw:m-0 tw:max-w-full"
           style="color: var(--kik-adeel-description-color);"
         >
           {{ section.settings.description | escape | newline_to_br }}
@@ -152,7 +157,7 @@
             <div class="tw:flex tw:flex-1 tw:flex-col tw:gap-[8px] tw:pt-[16px]">
               {%- if block.settings.title != blank -%}
                 <h3
-                  class="tw:m-0 tw:text-[length:var(--kik-adeel-title-size-mobile)] tw:font-bold tw:leading-[1.18] tw:tracking-[-0.02em] tw:desktop:text-[length:var(--kik-adeel-title-size-desktop)]"
+                  class="kik-adeel-why-pococo__card-title tw:m-0 tw:tracking-[-0.02em]"
                   style="font-family: var(--kik-text-font-heading), sans-serif; color: var(--kik-adeel-card-title-color);"
                 >
                   {{ block.settings.title | escape }}
@@ -161,7 +166,7 @@
 
               {%- if block.settings.body != blank -%}
                 <div
-                  class="tw:m-0 tw:text-[length:var(--kik-adeel-body-size-mobile)] tw:leading-[1.55] tw:desktop:text-[length:var(--kik-adeel-body-size-desktop)]"
+                  class="kik-adeel-why-pococo__card-body tw:m-0"
                   style="color: var(--kik-adeel-card-body-color);"
                 >
                   {{ block.settings.body | escape | newline_to_br }}
@@ -184,9 +189,8 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "Add text"
-    },
+      "label": "Eyebrow"
+        },
     {
       "type": "text",
       "id": "heading",
@@ -301,7 +305,7 @@
       "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 15
+      "default": 14
     },
     {
       "type": "range",
@@ -341,7 +345,7 @@
       "max": 20,
       "step": 1,
       "unit": "px",
-      "default": 15
+      "default": 14
     },
     {
       "type": "range",
