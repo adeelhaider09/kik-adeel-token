@@ -98,7 +98,7 @@
         "heading_tag": "h2",
         "content_alignment": "center",
         "section_max_width": 1360,
-        "intro_width": 620,
+        "intro_width": 600,
         "desktop_columns": "4",
         "image_ratio": "16/10",
         "heading_size_mobile": 24,
